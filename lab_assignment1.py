@@ -13,4 +13,4 @@ def get(url, port):
     finally:
         connection.close()
 
-get("http://httpbin.org/get?course=networking&assignment=1", 8007)
+get("http://httpbin.org/get?course=networking&assignment=1", 80)
