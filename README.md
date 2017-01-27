@@ -6,9 +6,9 @@ httpc is a curl-like application but supports HTTP protocol only.
 Using httpc is easy. Just type a command, like this
   `httpc command [arguments]`
 The commands are:
-`get` : executes an HTTP GET request and prints the response
-`post` : executes a HTTP POST request and prints the response
-`help` : prints this README
+- `get` : executes an HTTP GET request and prints the response
+- `post` : executes a HTTP POST request and prints the response
+- `help` : prints this README
 
 Use `httpc help [command]` for more information about a specific command.
 
