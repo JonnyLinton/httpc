@@ -6,16 +6,15 @@ def get(url, port=80):
     # Retrieve hostname from passed URL
     host = urlparse(url).hostname
     # Retrieve query from URL
-    query = urlparse(url).query
-    good_query = "GET %s HTTP/1.1\r\nHost: %s\n\r\n\r\n" % (url, host)
-    print(good_query)
+    query_parameters = urlparse(url).query
+    full_get_query = "GET %s HTTP/1.1\r\nHost: %s\n\r\n\r\n" % (url, host)
     connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
         connection.connect((host, port))
-        connection.sendall(good_query.encode("utf-8"))
-        response = connection.recv(500, socket.MSG_WAITALL)
+        connection.sendall(full_get_query.encode("utf-8"))
+        response = connection.recv(4096)
         sys.stdout.write(response.decode("utf-8"))
     finally:
         connection.close()
 
-get("http://www.google.com/?hello+world")
+get("https://httpbin.org/")
