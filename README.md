@@ -13,9 +13,8 @@ The commands are:
 Use `httpc help [command]` for more information about a specific command.
 
 ## Get Usage
-`httpc help get`
-
-usage: `httpc get [-v] [-h key:value] URL`
+Here's what a typical `get` command looks like:
+`httpc get [-v] [-h key:value] URL`
 
 Get executes an HTTP GET request for a given url
 
@@ -24,9 +23,8 @@ Get executes an HTTP GET request for a given url
 `-h key:value` : Associates headers to HTTP Request with the format `key:value`.
 
 ##Post Usage
-`httpc help post`
-
-usage: `httpc post [-v] [-h key:value] [-d inline-data] [-f file] URL`
+Now here's how you would do a post request
+`httpc post [-v] [-h key:value] [-d inline-data] [-f file] URL`
 
 Post executes a HTTP POST request for a given URL with inline data or from file.
 
