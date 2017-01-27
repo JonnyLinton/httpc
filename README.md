@@ -60,7 +60,7 @@ Output:
 }
 ```
 
-##Get with verbose option
+###Get with verbose option
 `httpc get -v 'http://httpbin.org/get?course=networking&assignment=1'`
 
 Output:
@@ -88,7 +88,7 @@ Access-Control-Allow-Credentials: true
 }
 ```
 
-##Post with inline data
+###Post with inline data
 `httpc post -h Content-Type:application/json --d '{"Assignment": 1}'
 http://httpbin.org/post`
 
