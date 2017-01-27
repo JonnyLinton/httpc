@@ -1,5 +1,6 @@
 import socket
 import sys
+import argparse
 from urllib.parse import urlparse
 
 def get(url, port=80):
@@ -17,4 +18,9 @@ def get(url, port=80):
     finally:
         connection.close()
 
-get("https://httpbin.org/")
+
+# Usage: python lab_assignment1.py --url http://httpbin.org/get?param=value&param2=value2
+parser = argparse.ArgumentParser()
+parser.add_argument("--url", help="url")
+args = parser.parse_args()
+get(args.url)
