@@ -46,14 +46,14 @@ Either `[-d]` or `[-f]` can be used but not both.
 
 Output:
 
-  {
-  "args": {
-      "assignment": "1",
-      "course": "networking"
-    },
-    "headers": {
-      "Host": "httpbin.org",
-      "User-Agent": "Concordia-HTTP/1.0"
+```{
+"args": {
+    "assignment": "1",
+    "course": "networking"
   },
-    "url": "http://httpbin.org/get?course=networking&assignment=1"
-  }
+  "headers": {
+    "Host": "httpbin.org",
+    "User-Agent": "Concordia-HTTP/1.0"
+},
+  "url": "http://httpbin.org/get?course=networking&assignment=1"
+}```
