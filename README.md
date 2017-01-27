@@ -7,8 +7,8 @@ httpc is a curl-like application but supports HTTP protocol only.
 - [get usage](#get-usage)
 - [post usage](#post-usage)
 - [Examples](#examples)
-  - [Get with verbose option](#get-with-verbose-option)
-  - [Post with inline data](#post-with-inline-data)
+  - [get with verbose option](#get-with-verbose-option)
+  - [post with inline data](#post-with-inline-data)
 
 ##How to use httpc
 Using httpc is easy. Just type a command, like this
