@@ -59,3 +59,55 @@ Output:
   "url": "http://httpbin.org/get?course=networking&assignment=1"
 }
 ```
+
+##Get with verbose option
+`httpc get -v 'http://httpbin.org/get?course=networking&assignment=1'`
+
+Output:
+
+```
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sat, 10 Sep 2016 15:53:19 GMT
+Content-Type: application/json
+Content-Length: 255
+Connection: close
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Credentials: true
+{
+  "args": {
+    "assignment": "1",
+    "course": "networking"
+  },
+  "headers": {
+    "Host": "httpbin.org",
+    "User-Agent": "Concordia-HTTP/1.0"
+    Comp445 – Lab Assignment # 1 Page 7 ©Aiman Hanna
+},
+  "url": "http://httpbin.org/get?course=networking&assignment=1"
+}
+```
+
+##Post with inline data
+`httpc post -h Content-Type:application/json --d '{"Assignment": 1}'
+http://httpbin.org/post`
+
+Output:
+
+```
+{
+  "args": {},
+  "data": "{\"Assignment\": 1}",
+  "files": {},
+  "form": {},
+  "headers": {
+    "Content-Length": "17",
+    "Content-Type": "application/json",
+    "Host": "httpbin.org",
+    "User-Agent": "Concordia-HTTP/1.0"
+}, "json": {
+    "Assignment": 1
+  },
+  "url": "http://httpbin.org/post"
+}
+```
