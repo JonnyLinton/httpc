@@ -3,7 +3,7 @@ import sys
 import argparse
 from urllib.parse import urlparse
 
-def get(url, port=80):
+def http_get(url, port=80):
     # Retrieve hostname from passed URL
     host = urlparse(url).hostname
     # Retrieve query from URL
@@ -17,10 +17,3 @@ def get(url, port=80):
         sys.stdout.write(response.decode("utf-8"))
     finally:
         connection.close()
-
-
-# Usage: python lab_assignment1.py --url http://httpbin.org/get?param=value&param2=value2
-parser = argparse.ArgumentParser()
-parser.add_argument("--url", help="url")
-args = parser.parse_args()
-get(args.url)
