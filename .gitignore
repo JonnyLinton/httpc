@@ -1,2 +1,4 @@
 #misc
 .DS_Store
+/httpc.egg-info
+/__pycache__

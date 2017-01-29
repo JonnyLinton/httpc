@@ -5,7 +5,7 @@
 
 Options:
   --help                  Show this screen.
-  -h, --headers HEADERS    Headers of the request.
+  -h, --headers HEADERS   Headers of the request.
   -d, --data BODY         Body of the request.
 
 """
