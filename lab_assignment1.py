@@ -14,8 +14,14 @@ def http_get(url, port=80):
     try:
         connection.connect((host, port))
         connection.sendall(query.encode("utf-8"))
-        response = connection.recv(4096)
-        sys.stdout.write(response.decode("utf-8"))
+        while True:
+            print("hello")
+            response = connection.recv(4096)
+            print(response)
+            if not response:
+                print("break")
+                break
+            sys.stdout.write(response.decode("utf-8"))
     finally:
         connection.close()
 
