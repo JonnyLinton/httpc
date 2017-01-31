@@ -29,15 +29,23 @@ def http_post(headers, data, url, port=80):
 
     # Retrieve hostname from passed URL
     host = urlparse(url).hostname
-
-    query = "POST /post HTTP/1.1\r\nHost: %s\n\r%s \n\r\n\r%s\n\r\n\r\n" % (host, headers, data)
-    sys.stdout.write(query)
+# POST /post HTTP/1.1
+# Host: httpbin.org
+# Content-Type: application/json
+#
+# {"Assignment": 1}
+    # query = "POST /post HTTP/1.1\r\nHost: %s\r\n%s\r\n\r\n%s\r\n\r\n\r" % (host, headers, data)
+    connection_header = "Connection: close"
+    query = "POST /post HTTP/1.1\r\nHost: %s\r\n%s\r\n%s\r\n\r\n%s\r\n\r\n" % (host, headers, connection_header, data)
+    print("\nRequest:")
+    print(query)
 
     connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
         connection.connect((host, port))
         connection.sendall(query.encode("utf-8"))
         response = connection.recv(4096)
-        sys.stdout.write(response.decode("utf-8"))
+        print("Response:")
+        print(response.decode("utf-8"))
     finally:
         connection.close()
