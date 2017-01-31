@@ -29,12 +29,7 @@ def http_post(headers, data, url, port=80):
 
     # Retrieve hostname from passed URL
     host = urlparse(url).hostname
-# POST /post HTTP/1.1
-# Host: httpbin.org
-# Content-Type: application/json
-#
-# {"Assignment": 1}
-    # query = "POST /post HTTP/1.1\r\nHost: %s\r\n%s\r\n\r\n%s\r\n\r\n\r" % (host, headers, data)
+
     connection_header = "Connection: close"
     query = "POST /post HTTP/1.1\r\nHost: %s\r\n%s\r\n%s\r\n\r\n%s\r\n\r\n" % (host, headers, connection_header, data)
     print("\nRequest:")
