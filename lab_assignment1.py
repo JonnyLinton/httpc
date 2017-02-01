@@ -33,15 +33,12 @@ def http_post(headers, data, url, port=80):
     #Specify Connection and Content-Length in headers
     connection_header = "Connection: close\r\nContent-Length: " + str(len(data))
     query = "POST /post HTTP/1.1\r\nHost: %s\r\n%s\r\n%s\r\n\r\n%s" % (host, headers, connection_header, data)
-    print("\nRequest:")
-    print(query)
 
     connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
         connection.connect((host, port))
         connection.sendall(query.encode("utf-8"))
         response = connection.recv(4096)
-        print("Response:")
         print(response.decode("utf-8"))
     finally:
         connection.close()
