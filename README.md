@@ -3,7 +3,7 @@ Requirements: pip (https://packaging.python.org/installing/#install-pip-setuptoo
 
 git clone git@github.com:louis-ver/Comp445_Lab1.git
 
-pip install -e .
+`pip install -e`
 
 # Introducing httpc 1.0
 

@@ -30,6 +30,7 @@ def http_post(headers, data, url, port=80):
     # Retrieve hostname from passed URL
     host = urlparse(url).hostname
 
+    #Specify Connection and Content-Length in headers
     connection_header = "Connection: close\r\nContent-Length: " + str(len(data))
     query = "POST /post HTTP/1.1\r\nHost: %s\r\n%s\r\n%s\r\n\r\n%s" % (host, headers, connection_header, data)
     print("\nRequest:")
