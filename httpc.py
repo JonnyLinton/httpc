@@ -1,4 +1,5 @@
 """Usage:
+  httpc help <command>
   httpc --help
   httpc get [-v] <url>
   httpc post [-v] [options] <url>
@@ -12,13 +13,18 @@ Options:
 See 'httpc help <command>' for more information on a specific command.
 """
 from docopt import docopt
+from subprocess import call
 from lab_assignment1 import http_get, http_post
 
 def run():
     args = docopt(__doc__)  # parse arguments based on docstring above
+    print(args.get("<command>"))
+
+    if(args.get("help") and args.get("<command>")):
+        exit(call(['python', 'httpc_%s.py' % args['<command>']]))
 
     # determine the http request type, and call the appropriate function
-    if(args.get("get")):
+    elif(args.get("get")):
         http_get(args.get("<url>"), args.get("-v"))
     elif(args.get("post")):
         http_post(args.get("--headers"), args.get("--data"), args.get("<url>"), args.get("-v"))
