@@ -18,7 +18,6 @@ def http_get(url, verbose, port=80):
         printResponse(response, verbose)
     finally:
         connection.close()
-
 def http_post(headers, data, url, verbose, port=80):
 
     # Retrieve hostname from passed URL
@@ -36,7 +35,6 @@ def http_post(headers, data, url, verbose, port=80):
         printResponse(response, verbose)
     finally:
         connection.close()
-
 def receiveResponse(connection):
     response = ""
     while True:
