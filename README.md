@@ -1,7 +1,7 @@
 #Installation
 Requirements: pip (https://packaging.python.org/installing/#install-pip-setuptools-and-wheel)
 
-`pip install -e`
+`pip install -e .`
 
 # Introducing httpc 1.0
 
