@@ -45,8 +45,8 @@ def receiveResponse(connection):
             responseSize = int(responseSize)
             while True:
                 try:
-                    connection.settimeout(1)
-                    response += connection.recv(4096).decode("utf-8")
+                    connection.settimeout(0.2)
+                    response += connection.recv(1024).decode("utf-8")
                 except:
                     return response
 
