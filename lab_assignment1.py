@@ -42,8 +42,13 @@ def receiveResponse(connection):
         # if all the headers have been read
         if("\r\n\r\n" in response):
             responseSize = response.split("Content-Length: ")[1].split("\r\n")[0]
-            response += connection.recv(int(responseSize)).decode("utf-8")
-            return response
+            responseSize = int(responseSize)
+            while True:
+                try:
+                    connection.settimeout(1)
+                    response += connection.recv(4096).decode("utf-8")
+                except:
+                    return response
 
 def printResponse(response, verbose):
     if(verbose):
