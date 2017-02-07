@@ -14,7 +14,9 @@ See 'httpc help <command>' for more information on a specific command.
 """
 from docopt import docopt
 from subprocess import call
-from lab_assignment1 import http_get, http_post
+# from lab_assignment1 import http_get, http_post
+from httpc_get import http_get
+from httpc_post import http_post
 
 def run():
     args = docopt(__doc__)  # parse arguments based on docstring above
@@ -51,4 +53,4 @@ Post executes a HTTP POST request for a given URL with inline data or from file.
 Either [-d] or [-f] can be used but not both.
         """)
     else:
-        print("Invalid command")
+        print("httpc: Invalid command")

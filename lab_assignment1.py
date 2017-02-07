@@ -1,40 +1,21 @@
 import socket
 import sys
-import argparse
-from urllib.parse import urlparse
 
-def http_get(url, verbose, port=80):
-    # Retrieve hostname from passed URL
-    host = urlparse(url).hostname
-
-    # Format get query using URL and Host
-    query = "GET %s HTTP/1.1\r\nHost: %s\n\r\n\r\n" % (url, host)
-
+def sendRequest(query, host, port):
     connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
         connection.connect((host, port))
         connection.sendall(query.encode("utf-8"))
-        response = receiveResponse(connection)
-        printResponse(response, verbose)
     finally:
-        connection.close()
-def http_post(headers, data, url, verbose, port=80):
+        return connection
 
-    # Retrieve hostname from passed URL
-    host = urlparse(url).hostname
-
-    #Specify Connection and Content-Length in headers
-    content_header = "Content-Length: " + str(len(data))
-    query = "POST /post HTTP/1.1\r\nHost: %s\r\n%s\r\n%s\r\n\r\n%s" % (host, headers, content_header, data)
-
-    connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+def getResponse(connection, verbose):
     try:
-        connection.connect((host, port))
-        connection.sendall(query.encode("utf-8"))
         response = receiveResponse(connection)
         printResponse(response, verbose)
     finally:
         connection.close()
+
 def receiveResponse(connection):
     response = ""
     while True:
