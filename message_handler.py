@@ -9,13 +9,6 @@ def sendRequest(query, host, port):
     finally:
         return connection
 
-def getResponse(connection, verbose):
-    try:
-        response = receiveResponse(connection)
-        printResponse(response, verbose)
-    finally:
-        connection.close()
-
 def receiveResponse(connection):
     response = ""
     while True:
@@ -24,6 +17,20 @@ def receiveResponse(connection):
             response += connection.recv(1024).decode("utf-8")
         except:
             return response
+
+def checkForRedirect(response):
+    responseTemp = response
+    headers = responseTemp.split("\r\n")
+    code = int(headers[0].split(" ")[1])
+    if(code > 299 and code < 400):
+        for header in headers:
+            if("Location:" in header):
+                location = header.split(": ")[1]
+        if(location):
+            print("3xx type HTTP code given in response -- redirecting to ", location)
+            return location
+        else:
+            print("No Location specified in the headers! Cannot redirect.")
 
 def printResponse(response, verbose):
     if(verbose):

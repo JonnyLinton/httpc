@@ -9,7 +9,7 @@ Post executes a HTTP POST request for a given URL with inline data or from file.
 Either -d or -f can be used but not both.
 """
 
-from message_handler import sendRequest, getResponse, receiveResponse, printResponse
+from message_handler import sendRequest, receiveResponse, printResponse, checkForRedirect
 from urllib.parse import urlparse
 from docopt import docopt
 
@@ -26,4 +26,5 @@ def http_post(headers, data, url, verbose, port=80):
     content_header = "Content-Length: " + str(len(data_str))
     query = "POST /post HTTP/1.1\r\nHost: %s\r\n%s\r\n%s\r\n\r\n%s" % (host, headers, content_header, data)
     connection = sendRequest(query, host, port)
-    getResponse(connection, verbose)
+    response = receiveResponse(connection)
+    printResponse(response, verbose)

@@ -6,7 +6,7 @@ Get executes a HTTP GET request for a given URL.
    -o FILE        Outputs response to specified file.
 """
 
-from message_handler import sendRequest, getResponse, receiveResponse, printResponse
+from message_handler import sendRequest, receiveResponse, printResponse, checkForRedirect
 from urllib.parse import urlparse
 from docopt import docopt
 
@@ -23,4 +23,9 @@ def http_get(url, verbose, headers, port=80):
     # Format get query using URL and Host
     query = "GET %s HTTP/1.1\r\nHost: %s\r\n%s\n\r\n\r\n" % (url, host, formattedHeaders)
     connection = sendRequest(query, host, port)
-    getResponse(connection, verbose)
+    response = receiveResponse(connection)
+    location = checkForRedirect(response)
+    if(location):
+        http_get(location, verbose, headers)
+    else:
+        printResponse(response, verbose)
