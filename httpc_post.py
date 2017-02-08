@@ -9,7 +9,7 @@ Post executes a HTTP POST request for a given URL with inline data or from file.
 Either -d or -f can be used but not both.
 """
 
-from response_handler import sendRequest, getResponse, receiveResponse, printResponse
+from message_handler import sendRequest, getResponse, receiveResponse, printResponse
 from urllib.parse import urlparse
 from docopt import docopt
 

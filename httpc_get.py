@@ -6,7 +6,7 @@ Get executes a HTTP GET request for a given URL.
    -o FILE        Outputs response to specified file.
 """
 
-from response_handler import sendRequest, getResponse, receiveResponse, printResponse
+from message_handler import sendRequest, getResponse, receiveResponse, printResponse
 from urllib.parse import urlparse
 from docopt import docopt
 

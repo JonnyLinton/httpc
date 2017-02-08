@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='httpc',
-    py_modules=['httpc', 'response_handler', 'http_get', 'http_post'],
+    py_modules=['httpc', 'message_handler', 'http_get', 'http_post'],
     install_requires=[
         'docopt',
     ],
