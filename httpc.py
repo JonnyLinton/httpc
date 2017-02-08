@@ -1,8 +1,8 @@
 """Usage:
   httpc help <command>
   httpc --help
-  httpc get [-v] <url>
-  httpc post [-v] -h HEADERS (-d DATA | -f FILE) <url>
+  httpc get [-v] [(-h HEADERS)]... <url>
+  httpc post [-v] [(-h HEADERS)]... (-d DATA | -f FILE) <url>
 
 Options:
   --help                  Show this screen.
@@ -25,7 +25,7 @@ def run():
         exit(call(['python3', 'httpc_%s.py' % args.get("<command>")]))
     # determine the http request type, and call the appropriate function
     elif(args.get("get")):
-        http_get(args.get("<url>"), args.get("-v"))
+        http_get(args.get("<url>"), args.get("-v"), args.get("--headers"))
     elif(args.get("post")):
         filePath = args.get("--file")
         if(filePath):
