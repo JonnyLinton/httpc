@@ -3,9 +3,10 @@ Usage: httpc get [-v] [-h key:value] URL
 Get executes a HTTP GET request for a given URL.
    -v             Prints the detail of the response such as protocol, status, and headers.
    -h key:value   Associates headers to HTTP Request with the format 'key:value'.
+   -o FILE        Outputs response to specified file.
 """
 
-from lab_assignment1 import sendRequest, getResponse, receiveResponse, printResponse
+from response_handler import sendRequest, getResponse, receiveResponse, printResponse
 from urllib.parse import urlparse
 from docopt import docopt
 

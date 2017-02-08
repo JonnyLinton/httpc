@@ -1,15 +1,16 @@
 """Usage:
   httpc help <command>
   httpc --help
-  httpc get [-v] [(-h HEADERS)]... <url>
+  httpc get [-v] [(-h HEADERS)]... [-o FILE] <url>
   httpc post [-v] [(-h HEADERS)]... (-d DATA | -f FILE) <url>
 
 Options:
   --help                  Show this screen.
-  -v                      Prints details of the response such as protocol, status, and headers
+  -v                      Prints details of the response such as protocol, status, and headers.
   -h, --headers HEADERS   Headers of the request.
   -d, --data BODY         Body of the request.
-  -f, --file FILE         File containing the body of the request
+  -f, --file FILE         File containing the body of the request.
+  -o FILE                 Outputs response to specified file.
 
 See 'httpc help <command>' for more information on a specific command.
 """

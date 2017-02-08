@@ -5,10 +5,11 @@ Post executes a HTTP POST request for a given URL with inline data or from file.
    -h key:value     Associates headers to HTTP Request with the format 'key:value'.
    -d string        Associates an inline data to the body HTTP POST request.
    -f file          Associates the content of a file to the body HTTP POST request.
+   -o FILE          Outputs response to specified file.
 Either -d or -f can be used but not both.
 """
 
-from lab_assignment1 import sendRequest, getResponse, receiveResponse, printResponse
+from response_handler import sendRequest, getResponse, receiveResponse, printResponse
 from urllib.parse import urlparse
 from docopt import docopt
 
