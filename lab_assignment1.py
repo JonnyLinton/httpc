@@ -19,17 +19,11 @@ def getResponse(connection, verbose):
 def receiveResponse(connection):
     response = ""
     while True:
-        response += connection.recv(32).decode("utf-8")
-        # if all the headers have been read
-        if("\r\n\r\n" in response):
-            responseSize = response.split("Content-Length: ")[1].split("\r\n")[0]
-            responseSize = int(responseSize)
-            while True:
-                try:
-                    connection.settimeout(0.2)
-                    response += connection.recv(1024).decode("utf-8")
-                except:
-                    return response
+        try:
+            connection.settimeout(0.2)
+            response += connection.recv(1024).decode("utf-8")
+        except:
+            return response
 
 def printResponse(response, verbose):
     if(verbose):
