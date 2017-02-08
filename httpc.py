@@ -14,7 +14,7 @@ Options:
 See 'httpc help <command>' for more information on a specific command.
 """
 from docopt import docopt
-# from subprocess import call
+from subprocess import call
 from httpc_get import http_get
 from httpc_post import http_post
 
