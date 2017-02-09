@@ -26,7 +26,7 @@ def run():
     if(args.get("help") and args.get("<command>")):
         exit(call(['python3', 'httpc_%s.py' % args.get("<command>")]))
     # determine the http request type, and call the appropriate function
-    elif((args.get("get"))):
+    elif((args.get("get")) or (not args.get("get") and not args.get("post"))):
         http_get(args.get("<url>"), args.get("-v"), args.get("--headers"), args.get("--output"))
     elif(args.get("post")):
         filePath = args.get("--file")
