@@ -38,7 +38,7 @@ def formatVerbose(response, verbose):
     else:
         responseArr = response.split("\r\n\r\n")
         return responseArr[1]
-def printResponse(response, pathName):
+def printResponse(response, pathName=None):
     if pathName:
         file = open(pathName, 'w')
         file.write(response)

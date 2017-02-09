@@ -9,22 +9,26 @@ Post executes a HTTP POST request for a given URL with inline data or from file.
 Either -d or -f can be used but not both.
 """
 
-from message_handler import sendRequest, receiveResponse, printResponse, checkForRedirect
+from message_handler import sendRequest, receiveResponse, printResponse, checkForRedirect, formatVerbose
 from urllib.parse import urlparse
 from docopt import docopt
 
 if __name__ == '__main__':
     print(docopt(__doc__))
 
-def http_post(headers, data, url, verbose, port=80):
+def http_post(headers, data, url, verbose, pathName, port=80):
     # Retrieve hostname from passed URL
     host = urlparse(url).hostname
     # encode data and convert to string so that the len() method works properly
     data_str = str(data).encode("utf-8")
 
+    # Transform list of headers into single string, separated by \r\n
+    formattedHeaders = "\r\n".join(headers)
+
     #Specify Connection and Content-Length in headers
     content_header = "Content-Length: " + str(len(data_str))
-    query = "POST /post HTTP/1.1\r\nHost: %s\r\n%s\r\n%s\r\n\r\n%s" % (host, headers, content_header, data)
+    query = "POST /post HTTP/1.1\r\nHost: %s\r\n%s\r\n%s\r\n\r\n%s" % (host, formattedHeaders, content_header, data)
     connection = sendRequest(query, host, port)
     response = receiveResponse(connection)
-    printResponse(response, verbose)
+    formattedResponse = formatVerbose(response, verbose)
+    printResponse(formattedResponse, pathName)

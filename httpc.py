@@ -1,8 +1,9 @@
 """Usage:
   httpc help <command>
   httpc --help
+  httpc [-v] [(-h HEADERS)]... [-o FILE] <url>
   httpc get [-v] [(-h HEADERS)]... [-o FILE] <url>
-  httpc post [-v] [(-h HEADERS)]... (-d DATA | -f FILE) <url>
+  httpc post [-v] [(-h HEADERS)]... [-o FILE] (-d DATA | -f FILE) <url>
 
 Options:
   --help                  Show this screen.
@@ -25,7 +26,7 @@ def run():
     if(args.get("help") and args.get("<command>")):
         exit(call(['python3', 'httpc_%s.py' % args.get("<command>")]))
     # determine the http request type, and call the appropriate function
-    elif(args.get("get")):
+    elif((args.get("get"))):
         http_get(args.get("<url>"), args.get("-v"), args.get("--headers"), args.get("--output"))
     elif(args.get("post")):
         filePath = args.get("--file")
@@ -34,8 +35,8 @@ def run():
                 data = ""
                 for line in f:
                     data += line
-            http_post(args.get("--headers"), data, args.get("<url>"), args.get("-v"))
+            http_post(args.get("--headers"), data, args.get("<url>"), args.get("-v"), args.get("--output"))
         else:
-            http_post(args.get("--headers"), args.get("--data"), args.get("<url>"), args.get("-v"))
+            http_post(args.get("--headers"), args.get("--data"), args.get("<url>"), args.get("-v"), args.get("--output"))
     else:
         "Invalid query"
