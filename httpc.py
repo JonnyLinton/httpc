@@ -10,7 +10,7 @@ Options:
   -h, --headers HEADERS   Headers of the request.
   -d, --data BODY         Body of the request.
   -f, --file FILE         File containing the body of the request.
-  -o FILE                 Outputs response to specified file.
+  -o, --output FILE       Outputs response to specified file.
 
 See 'httpc help <command>' for more information on a specific command.
 """
@@ -26,7 +26,7 @@ def run():
         exit(call(['python3', 'httpc_%s.py' % args.get("<command>")]))
     # determine the http request type, and call the appropriate function
     elif(args.get("get")):
-        http_get(args.get("<url>"), args.get("-v"), args.get("--headers"))
+        http_get(args.get("<url>"), args.get("-v"), args.get("--headers"), args.get("--output"))
     elif(args.get("post")):
         filePath = args.get("--file")
         if(filePath):

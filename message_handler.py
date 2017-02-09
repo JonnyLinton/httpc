@@ -32,10 +32,16 @@ def checkForRedirect(response):
         else:
             print("No Location specified in the headers! Cannot redirect.")
 
-def printResponse(response, verbose):
-    if(verbose):
-        print(response)
+def formatVerbose(response, verbose):
+    if verbose:
+        return response
     else:
-        # responseArr[0] contains headers, responseArr[1] contains body
         responseArr = response.split("\r\n\r\n")
-        print(responseArr[1])
+        return responseArr[1]
+def printResponse(response, pathName):
+    if pathName:
+        file = open(pathName, 'w')
+        file.write(response)
+        print("Output was written to file.")
+    else:
+        print(response)

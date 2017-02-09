@@ -6,14 +6,14 @@ Get executes a HTTP GET request for a given URL.
    -o FILE        Outputs response to specified file.
 """
 
-from message_handler import sendRequest, receiveResponse, printResponse, checkForRedirect
+from message_handler import sendRequest, receiveResponse, printResponse, checkForRedirect, formatVerbose
 from urllib.parse import urlparse
 from docopt import docopt
 
 if __name__ == '__main__':
     print(docopt(__doc__))
 
-def http_get(url, verbose, headers, port=80):
+def http_get(url, verbose, headers, pathName, port=80):
     # Retrieve hostname from passed URL
     host = urlparse(url).hostname
 
@@ -26,6 +26,7 @@ def http_get(url, verbose, headers, port=80):
     response = receiveResponse(connection)
     location = checkForRedirect(response)
     if(location):
-        http_get(location, verbose, headers)
+        http_get(location, verbose, headers, pathName)
     else:
-        printResponse(response, verbose)
+        formattedResponse = formatVerbose(response, verbose)
+        printResponse(formattedResponse, pathName)
