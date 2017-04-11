@@ -1,4 +1,4 @@
-#Installation
+# Installation
 Requirements: pip (https://packaging.python.org/installing/#install-pip-setuptools-and-wheel)
 
 `pip install -e .`
@@ -7,7 +7,7 @@ Requirements: pip (https://packaging.python.org/installing/#install-pip-setuptoo
 
 httpc is a curl-like application but supports HTTP protocol only.
 
-##Table of Contents
+## Table of Contents
 - [How to use httpc](#how-to-use-httpc)
 - [get usage](#get-usage)
 - [post usage](#post-usage)
@@ -15,7 +15,7 @@ httpc is a curl-like application but supports HTTP protocol only.
   - [get with verbose option](#get-with-verbose-option)
   - [post with inline data](#post-with-inline-data)
 
-##How to use httpc
+## How to use httpc
 Using httpc is easy. Just type a command, like this
   `httpc command [arguments]`
 The commands are:
@@ -35,7 +35,7 @@ Get executes an HTTP GET request for a given url
 
 `-h key:value` : Associates headers to HTTP Request with the format `key:value`.
 
-##Post Usage
+## Post Usage
 Now here's how you would do a post request
 `httpc post [-v] [-h key:value] [-d inline-data] [-f file] URL`
 
@@ -51,7 +51,7 @@ Post executes a HTTP POST request for a given URL with inline data or from file.
 
 Either `[-d]` or `[-f]` can be used but not both.
 
-##Examples
+## Examples
 
 `httpc get 'http://httpbin.org/get?course=networking&assignment=1'`
 
@@ -71,7 +71,7 @@ Output:
 }
 ```
 
-###Get with verbose option
+### Get with verbose option
 `httpc get -v 'http://httpbin.org/get?course=networking&assignment=1'`
 
 Output:
@@ -99,7 +99,7 @@ Access-Control-Allow-Credentials: true
 }
 ```
 
-###Post with inline data
+### Post with inline data
 `httpc post -h Content-Type:application/json --d '{"Assignment": 1}'
 http://httpbin.org/post`
 
